@@ -48,6 +48,11 @@ function getSeconds() {
     return Math.round(Date.now() / 1000);
 }
 
+function getUid() {
+    return [getSeconds(), getRandom()].join('');
+}
+var uid = getUid();
+
 var MAX_TITLE_LEN = 512;
 function addParam(result, name, value) {
     if (value || value === 0) {
@@ -68,6 +73,7 @@ function getBrowserInfo(params, title) {
     addParam(result, 'et', time);
     addParam(result, 'st', time);
     addParam(result, 't', truncate(title, MAX_TITLE_LEN));
+    addParam(result, 'u', uid);
     return result.join(':');
 }
 

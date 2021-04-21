@@ -2,6 +2,7 @@ import { getCharset, cookieEnabled, getScreenSize, getClientSize } from './dom';
 import { truncate } from './string';
 import { getRandom } from './number';
 import { getSeconds } from './time';
+import { uid } from "./uid";
 
 const MAX_TITLE_LEN = 512;
 
@@ -29,6 +30,8 @@ export function getBrowserInfo(params: Lyam.BrowserInfo, title: string): string 
     addParam(result, 'st', time);
 
     addParam(result, 't', truncate(title, MAX_TITLE_LEN));
+
+    addParam(result, 'u', uid)
 
     return result.join(':');
 }
